@@ -49,11 +49,13 @@ if [ "$type" = "deepsaber" ]; then
   $py generate_stage1.py --cuda --song_path $song_path --experiment_name $exp1 --checkpoint $cpt1 --bpm 128 \
     --peak_threshold 0.33 \
     --temperature 1.00 | tail -1 | ( read json_file;
-#     $py generate_stage2.py --cuda --song_path $song_path --json_file $json_file --experiment_name $exp2 --checkpoint $cpt2 --bpm 128 \
-#         --temperature 1.00 \
-#         --use_beam_search \
-      # --open_in_browser \
-      #--generate_full_song \
+  $py generate_stage2.py --cuda --song_path $song_path \
+    --json_file $json_file \
+    --experiment_name $exp2 \
+    --checkpoint $cpt2 \
+    --bpm 128 \
+    --temperature 1.00 \
+    --use_beam_search \
     )
 
   # $py generate_stage1.py --song_path $song_path --experiment_name $exp1 --checkpoint $cpt1 --bpm 128 \
